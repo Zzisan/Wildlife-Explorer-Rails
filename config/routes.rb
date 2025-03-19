@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  get "observations/index"
+  get "observations/show"
+  get "habitats/index"
+  get "habitats/show"
+  get "animals/index"
+  get "animals/show"
   get "pages/about"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+  
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
@@ -11,13 +16,10 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  # root "posts#index"
-  Rails.application.routes.draw do
-    root 'animals#index'  # or whichever controller action you want as the home page
-    get 'about', to: 'pages#about'
-    resources :animals
-    resources :habitats
-    resources :observations
-    # Other routes...
-  end
-  
+  root 'animals#index'
+  get 'about', to: 'pages#about'
+
+  resources :animals
+  resources :habitats
+  resources :observations
+end

@@ -1,0 +1,32 @@
+<h1><%= @animal.common_name %> (<%= @animal.scientific_name %>)</h1>
+<p><strong>Classification:</strong> <%= @animal.classification %></p>
+<p><strong>Description:</strong> <%= @animal.description %></p>
+
+<h2>Habitats</h2>
+<% if @animal.habitats.any? %>
+  <ul>
+    <% @animal.habitats.each do |habitat| %>
+      <li>
+        <%= link_to habitat.name, habitat_path(habitat) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No habitats recorded for this animal.</p>
+<% end %>
+
+<h2>Observations</h2>
+<% if @animal.observations.any? %>
+  <ul>
+    <% @animal.observations.each do |observation| %>
+      <li>
+        <strong><%= observation.observer_name %>:</strong> <%= observation.notes %> 
+        (Observed at: <%= observation.observed_at.strftime("%b %d, %Y") %>)
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No observations recorded for this animal.</p>
+<% end %>
+
+<%= link_to 'Back to Animals', animals_path, class: "btn btn-secondary" %>

@@ -1,0 +1,18 @@
+<h1><%= @habitat.name %></h1>
+<p><%= @habitat.description %></p>
+<p><strong>Location:</strong> <%= @habitat.location %></p>
+
+<h2>Animals in this Habitat</h2>
+<% if @habitat.animals.any? %>
+  <ul>
+    <% @habitat.animals.each do |animal| %>
+      <li>
+        <%= link_to animal.common_name, animal_path(animal) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No animals recorded in this habitat.</p>
+<% end %>
+
+<%= link_to 'Back to Habitats', habitats_path, class: "btn btn-secondary" %>
