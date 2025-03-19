@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  observer_name: MyString
+  notes: MyText
+  observed_at: 2025-03-19 16:25:24
+  animal: one
+
+two:
+  observer_name: MyString
+  notes: MyText
+  observed_at: 2025-03-19 16:25:24
+  animal: two

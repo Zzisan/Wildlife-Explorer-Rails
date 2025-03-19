@@ -1,5 +1,12 @@
 source "https://rubygems.org"
 
+group :development, :test do
+  gem 'faker'
+end
+
+gem 'bootstrap', '~> 5.2.0'
+gem 'popper_js', '~> 2.11'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.2", ">= 7.2.2.1"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]

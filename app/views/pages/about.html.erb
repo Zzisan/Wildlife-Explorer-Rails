@@ -1,0 +1,39 @@
+<h1>About Wildlife Explorer</h1>
+<p>This application catalogs animals, their habitats, and observations.</p>
+<p>Data is generated using Faker (and optionally CSV/API sources) to simulate real-world data.</p>
+<h2>ER Diagram</h2>
+<pre>
+erDiagram
+    ANIMAL {
+        int id PK
+        string common_name
+        string scientific_name
+        text description
+        string classification
+    }
+
+    HABITAT {
+        int id PK
+        string name
+        text description
+        string location
+    }
+
+    OBSERVATION {
+        int id PK
+        string observer_name
+        text notes
+        datetime observed_at
+        int animal_id FK
+    }
+
+    ANIMAL_HABITAT {
+        int id PK
+        int animal_id FK
+        int habitat_id FK
+    }
+
+    ANIMAL ||--o{ OBSERVATION : "has"
+    ANIMAL ||--o{ ANIMAL_HABITAT : "inhabits"
+    HABITAT ||--o{ ANIMAL_HABITAT : "includes"
+</pre>
