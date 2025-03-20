@@ -28,24 +28,25 @@ CSV.foreach(Rails.root.join('db', 'data', 'habitats.csv'), headers: true) do |ro
 end
 puts "Imported #{Habitat.count} habitats."
 
-# Assign each animal to 1-3 random habitats
+# Assign random habitats to animals
 Animal.find_each do |animal|
-  random_habitats = Habitat.order("RANDOM()").limit(rand(1..3))
-  random_habitats.each do |habitat|
+  Habitat.order("RANDOM()").limit(rand(1..3)).each do |habitat|
     AnimalHabitat.create!(animal: animal, habitat: habitat)
   end
 end
 
 puts "Assigned habitats to animals."
 
-# Optionally seed observations using Faker
+# Create observations for animals
 Animal.find_each do |animal|
   rand(1..3).times do
     Observation.create!(
       observer_name: Faker::Name.name,
-      notes: Faker::Lorem.sentence,
+      notes: Faker::Lorem.sentence(word_count: 8),
       observed_at: Faker::Time.backward(days: 1000),
       animal: animal
     )
   end
 end
+
+puts "Created observations for animals."
