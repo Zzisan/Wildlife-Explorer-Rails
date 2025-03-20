@@ -1,112 +1,71 @@
-/* Jungle-Inspired Custom CSS */
+/* custom.css - Updated for cohesive look */
 
-/* Base body styles */
 body {
-    background-color: #e8f5e9; /* Light, refreshing green background */
-    color: #2e7d32; /* Dark green text for contrast */
+    background-color: #f8f9fa;
+    color: #333;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
   }
   
-  /* Navbar styling */
   .navbar {
-    background-color: #1b5e20; /* Rich dark green */
-    border-bottom: 3px solid #2e7d32;
+    background-color: #2e7d32; /* Dark green */
+    border-bottom: 2px solid #1b5e20;
   }
+  
   .navbar-brand,
   .nav-link {
-    color: #c8e6c9 !important; /* Light green, ensuring contrast on dark navbar */
+    color: #ffffff !important;
     font-weight: bold;
   }
+  
   .nav-link:hover {
-    color: #a5d6a7 !important;
+    color: #c8e6c9 !important;
   }
   
-  /* Headings styling */
   h1, h2, h3, h4, h5, h6 {
-    color: #2e7d32;  /* Dark green */
-    text-shadow: 1px 1px 1px #a5d6a7;  /* Subtle light shadow for depth */
+    color: #2e7d32;
+    text-shadow: 1px 1px 1px #a5d6a7;
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
   
-  /* Button styling */
   .btn-primary {
-    background-color: #388e3c; /* Medium green */
+    background-color: #388e3c;
     border-color: #2e7d32;
     color: #ffffff;
-    font-weight: bold;
   }
+  
   .btn-primary:hover {
     background-color: #2e7d32;
     border-color: #1b5e20;
   }
+  
   .btn-secondary {
     background-color: #66bb6a;
     border-color: #43a047;
     color: #ffffff;
-    font-weight: bold;
   }
+  
   .btn-secondary:hover {
     background-color: #43a047;
     border-color: #2e7d32;
   }
   
-  /* Table styling */
-  .table {
-    background-color: #ffffff;
-  }
   .table-striped tbody tr:nth-of-type(odd) {
     background-color: #e8f5e9;
   }
+  
   .table-striped tbody tr:nth-of-type(even) {
     background-color: #f1f8e9;
   }
-  .table th, .table td {
-    color: #2e7d32;
-  }
   
-  /* Alert styling */
   .alert-info {
     background-color: #c8e6c9;
     border-color: #a5d6a7;
     color: #1b5e20;
   }
-  .alert-warning {
-    background-color: #ffe082;
-    border-color: #ffca28;
-    color: #bf360c;
-  }
   
-  /* Form control styling */
-  .form-control {
-    border: 1px solid #a5d6a7;
-    box-shadow: none;
-    font-size: 1rem;
-  }
-  
-  /* Links */
-  a {
-    color: #388e3c;
-  }
-  a:hover {
-    color: #2e7d32;
-    text-decoration: underline;
-  }
-  
-  /* Container spacing */
   .container {
     padding-top: 2rem;
     padding-bottom: 2rem;
-  }
-  
-  /* Footer styling (if you use one) */
-  footer {
-    background-color: #1b5e20;
-    color: #c8e6c9;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
   }
   
