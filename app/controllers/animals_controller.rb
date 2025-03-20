@@ -5,10 +5,15 @@ class AnimalsController < ApplicationController
     @animals = Animal.all
 
     if params[:search].present?
-      @animals = @animals.where("common_name ILIKE ? OR scientific_name ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+      search_term = "%#{params[:search].downcase}%"
+      @animals = @animals.where(
+        "LOWER(common_name) LIKE ? OR LOWER(scientific_name) LIKE ?", 
+        search_term, 
+        search_term
+      )
     end
 
-    if params[:classification].present?
+    if params[:classification].present? && params[:classification] != "All"
       @animals = @animals.where(classification: params[:classification])
     end
 

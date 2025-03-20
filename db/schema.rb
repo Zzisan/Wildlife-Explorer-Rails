@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_19_212605) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_20_064836) do
   create_table "animal_habitats", force: :cascade do |t|
     t.integer "animal_id", null: false
     t.integer "habitat_id", null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_19_212605) do
     t.string "classification"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_url"
   end
 
   create_table "habitats", force: :cascade do |t|
@@ -35,6 +36,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_19_212605) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "observations", force: :cascade do |t|

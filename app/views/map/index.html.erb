@@ -1,0 +1,23 @@
+<h1 class="mb-4">Jungle Map</h1>
+<div id="map" style="width: 100%; height: 600px;"></div>
+
+<script>
+  var map = L.map('map').setView([0, 0], 2);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  var habitats = <%= raw Habitat.all.to_json(only: [:id, :name, :latitude, :longitude], include: { animals: { only: [:id, :common_name] } }) %>;
+
+  habitats.forEach(function(habitat) {
+    if (habitat.latitude && habitat.longitude) {
+      var marker = L.marker([habitat.latitude, habitat.longitude]).addTo(map);
+      marker.bindPopup(
+        "<h5>" + habitat.name + "</h5>" +
+        "<p>" + habitat.animals.map(a => a.common_name).join(', ') + "</p>" +
+        "<a href='/habitats/" + habitat.id + "'>View Habitat</a>"
+      );
+    }
+  });
+</script>

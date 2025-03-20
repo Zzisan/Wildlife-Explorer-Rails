@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "map/index"
+  get "maps/index"
   get "observations/index"
   get "observations/show"
   get "habitats/index"
@@ -6,6 +8,8 @@ Rails.application.routes.draw do
   get "animals/index"
   get "animals/show"
   get "pages/about"
+  get 'map', to: 'map#index'
+
   
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

@@ -16,7 +16,11 @@
     
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-cuTAHn0BsKdQeYnFq+JtVOS+6TvDx1L2F5e0I1Kk1lRAnYlAXClhCuoS7eJKjR2J" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-o9N1j7kN1/3pGZZCc1Jk28FweMC7rgtLV6e5tW4f5AA=" crossorigin=""/>
+    <%= stylesheet_link_tag "custom", "data-turbo-track": "reload" %>
   </head>
 
   <body>
@@ -24,9 +28,12 @@
     <div class="container mt-4">
       <%= yield %>
     </div>
-
+    
     <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
-    <!-- Bootstrap JS Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+4xZ1qY47gFh81WwDgk26anN8rovo" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-o9N1j7kN1/3pGZZCc1Jk28FweMC7rgtLV6e5tW4f5AA=" crossorigin=""></script>
   </body>
 </html>
