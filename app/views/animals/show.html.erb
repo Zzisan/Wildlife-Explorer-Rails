@@ -1,32 +1,45 @@
-<h1><%= @animal.common_name %> (<%= @animal.scientific_name %>)</h1>
-<p><strong>Classification:</strong> <%= @animal.classification %></p>
-<p><strong>Description:</strong> <%= @animal.description %></p>
+<div class="row">
+  <div class="col-md-8">
+    <h1><%= @animal.common_name %> (<%= @animal.scientific_name %>)</h1>
+    <p><strong>Classification:</strong> <%= @animal.classification %></p>
+    <p><strong>Description:</strong> <%= @animal.description %></p>
+  </div>
+</div>
 
-<h2>Habitats</h2>
-<% if @animal.habitats.any? %>
-  <ul>
-    <% @animal.habitats.each do |habitat| %>
-      <li>
-        <%= link_to habitat.name, habitat_path(habitat) %>
-      </li>
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h2>Habitats</h2>
+    <% if @animal.habitats.any? %>
+      <ul class="list-group">
+        <% @animal.habitats.each do |habitat| %>
+          <li class="list-group-item">
+            <%= link_to habitat.name, habitat_path(habitat) %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class="alert alert-warning">No habitats recorded for this animal.</div>
     <% end %>
-  </ul>
-<% else %>
-  <p>No habitats recorded for this animal.</p>
-<% end %>
+  </div>
 
-<h2>Observations</h2>
-<% if @animal.observations.any? %>
-  <ul>
-    <% @animal.observations.each do |observation| %>
-      <li>
-        <strong><%= observation.observer_name %>:</strong> <%= observation.notes %> 
-        (Observed at: <%= observation.observed_at.strftime("%b %d, %Y") %>)
-      </li>
+  <div class="col-md-6">
+    <h2>Observations</h2>
+    <% if @animal.observations.any? %>
+      <ul class="list-group">
+        <% @animal.observations.each do |observation| %>
+          <li class="list-group-item">
+            <strong><%= observation.observer_name %>:</strong>
+            <%= observation.notes %>
+            <small class="text-muted">(Observed at: <%= observation.observed_at.strftime("%b %d, %Y") %>)</small>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class="alert alert-warning">No observations recorded for this animal.</div>
     <% end %>
-  </ul>
-<% else %>
-  <p>No observations recorded for this animal.</p>
-<% end %>
+  </div>
+</div>
 
-<%= link_to 'Back to Animals', animals_path, class: "btn btn-secondary" %>
+<div class="mt-4">
+  <%= link_to 'Back to Animals', animals_path, class: "btn btn-secondary" %>
+</div>

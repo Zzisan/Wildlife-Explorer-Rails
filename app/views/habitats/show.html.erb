@@ -1,18 +1,28 @@
-<h1><%= @habitat.name %></h1>
-<p><%= @habitat.description %></p>
-<p><strong>Location:</strong> <%= @habitat.location %></p>
+<div class="row">
+  <div class="col-md-8">
+    <h1><%= @habitat.name %></h1>
+    <p><strong>Location:</strong> <%= @habitat.location %></p>
+    <p><strong>Description:</strong> <%= @habitat.description %></p>
+  </div>
+</div>
 
-<h2>Animals in this Habitat</h2>
-<% if @habitat.animals.any? %>
-  <ul>
-    <% @habitat.animals.each do |animal| %>
-      <li>
-        <%= link_to animal.common_name, animal_path(animal) %>
-      </li>
+<div class="row mt-4">
+  <div class="col-md-12">
+    <h2>Animals in this Habitat</h2>
+    <% if @habitat.animals.any? %>
+      <ul class="list-group">
+        <% @habitat.animals.each do |animal| %>
+          <li class="list-group-item">
+            <%= link_to animal.common_name, animal_path(animal) %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class="alert alert-warning">No animals recorded in this habitat.</div>
     <% end %>
-  </ul>
-<% else %>
-  <p>No animals recorded in this habitat.</p>
-<% end %>
+  </div>
+</div>
 
-<%= link_to 'Back to Habitats', habitats_path, class: "btn btn-secondary" %>
+<div class="mt-4">
+  <%= link_to 'Back to Habitats', habitats_path, class: "btn btn-secondary" %>
+</div>

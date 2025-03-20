@@ -1,6 +1,6 @@
 class HabitatsController < ApplicationController
   def index
-    @habitats = Habitat.all.order(:name).page(params[:page]).per(10)
+    @habitats = Habitat.order(:name).page(params[:page]).per(10)
   end
 
   def show

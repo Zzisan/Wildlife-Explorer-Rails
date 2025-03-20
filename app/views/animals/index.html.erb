@@ -1,40 +1,48 @@
-<h1>Animals</h1>
+<h1 class="mb-4">Animals</h1>
 
-<!-- Simple Search Form (Feature 4.1) -->
+<!-- Enhanced Search Form (Text Search + Classification Filtering) -->
 <%= form_with url: animals_path, method: :get, local: true do %>
-  <div class="input-group mb-3">
-    <%= text_field_tag :search, params[:search], placeholder: "Search by common or scientific name", class: "form-control" %>
-    <button class="btn btn-outline-secondary" type="submit">Search</button>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <%= text_field_tag :search, params[:search], placeholder: "Search by common or scientific name", class: "form-control" %>
+    </div>
+    <div class="col-md-4">
+      <%= select_tag :classification, options_for_select(@classifications.unshift("All"), params[:classification]), class: "form-control" %>
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-outline-secondary w-100" type="submit">Search</button>
+    </div>
   </div>
-  <div class="mt-3">
-  <%= paginate @animals %>
-</div>
-
 <% end %>
 
-<% if @animals.present? %>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Common Name</th>
-        <th>Scientific Name</th>
-        <th>Classification</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @animals.each do |animal| %>
+<div class="table-responsive">
+  <% if @animals.present? %>
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td><%= animal.common_name %></td>
-          <td><%= animal.scientific_name %></td>
-          <td><%= animal.classification %></td>
-          <td>
-            <%= link_to 'View', animal_path(animal), class: "btn btn-sm btn-primary" %>
-          </td>
+          <th>Common Name</th>
+          <th>Scientific Name</th>
+          <th>Classification</th>
+          <th>Actions</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>No animals found.</p>
-<% end %>
+      </thead>
+      <tbody>
+        <% @animals.each do |animal| %>
+          <tr>
+            <td><%= animal.common_name %></td>
+            <td><%= animal.scientific_name %></td>
+            <td><%= animal.classification %></td>
+            <td>
+              <%= link_to 'View', animal_path(animal), class: "btn btn-sm btn-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="mt-3">
+      <%= paginate @animals %>
+    </div>
+  <% else %>
+    <div class="alert alert-info">No animals found.</div>
+  <% end %>
+</div>
