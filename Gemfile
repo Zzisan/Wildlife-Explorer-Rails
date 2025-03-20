@@ -4,7 +4,7 @@ group :development, :test do
   gem 'faker'
 end
 
-gem 'bootstrap', '~> 5.2.0'
+gem 'bootstrap', '~> 5.3.3'
 gem 'popper_js', '~> 2.11'
 gem 'kaminari'
 
